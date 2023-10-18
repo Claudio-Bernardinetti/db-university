@@ -6,9 +6,9 @@ Group by:
     FROM `students`;
 
 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
-# 2 SELECT office_address AS office, COUNT(DISTINCT name, surname) AS number_teachers
-    FROM teachers
-    GROUP BY office_address;
+# 2 SELECT `office_address` AS office, COUNT(DISTINCT `name`, `surname`) AS number_teachers
+    FROM `teachers`
+    GROUP BY `office_address`;
 
 3. Calcolare la media dei voti di ogni appello d'esame
 # 3 SELECT `exam_id` AS exam, AVG(vote) AS avg_vote 
@@ -23,9 +23,18 @@ Group by:
 
 ##
 Joins:
+
 1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+# 1 SELECT students.* 
+    FROM `students` 
+    JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id` 
+    WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 
 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+# 2 SELECT `degrees`.`name` AS couses 
+    FROM `degrees` 
+    JOIN `departments` ON `degrees`.`department_id` = `departments`.`id` 
+    WHERE `degrees`.`level` = 'Laurea Magistrale' AND `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
