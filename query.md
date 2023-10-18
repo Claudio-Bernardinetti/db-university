@@ -5,7 +5,7 @@
 # 2 SELECT * FROM `courses` WHERE `cfu` > 10;
 
 3. Selezionare tutti gli studenti che hanno più di 30 anni
-# 3 SELECT * FROM `students` WHERE YEAR(CURDATE()) - YEAR(date_of_birth) > 30;
+# 3 SELECT * FROM `students` WHERE TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) > 30;
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
 laurea (286)
@@ -22,5 +22,4 @@ laurea (286)
 # 7 SELECT * FROM `departments` WHERE `id`;
 
 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
-# 8 SELECT * FROM `teachers` WHERE `phone` IS NULL;
-
+# 8 SELECT COUNT (*)  as `total_teachers_with_phone` FROM `teachers` WHERE `phone` IS NULL;
